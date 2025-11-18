@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS LAB - Transformamos Ideas en Sistemas</title>
+    <!-- Fuente Anton para logo -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Anton', 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            letter-spacing: 4px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #fff;
+            filter: drop-shadow(0 2px 8px #764ba2) drop-shadow(0 0 16px #fff);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 2rem 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 2rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #667eea;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #667eea;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-links {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .service-links a {
+            color: #764ba2;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: padding-left 0.3s;
+        }
+
+        .service-links a:hover {
+            padding-left: 10px;
+            text-decoration: underline;
+        }
+
+        /* Portfolio/Demos */
+        .demos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .demo-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .demo-card:hover {
+            transform: scale(1.05);
+        }
+
+        .demo-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .demo-button {
+            background: #667eea;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .demo-button:hover {
+            background: #764ba2;
+        }
+
+        /* About/CV Section */
+        .about-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .cv-button {
+            background: #667eea;
+            color: white;
+            padding: 12px 35px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1.5rem;
+            transition: background 0.3s;
+        }
+
+        .cv-button:hover {
+            background: #764ba2;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 3rem;
+        }
+
+        .contact-section h2 {
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .about-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">SYNERGY LAB</div>
+            <ul class="nav-links">
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#demos">Demos</a></li>
+                <li><a href="#about">Quién Soy</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Transformamos Ideas en Sistemas</h1>
+        <p>Ecosistema integral de innovación, gestión y desarrollo organizacional</p>
+        <a href="#servicios" class="cta-button">Explorar Servicios</a>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios">
+        <h2>Nuestros Servicios</h2>
+        <div class="services-grid">
+            <!-- Gestión Digital -->
+            <div class="service-card">
+                <div class="service-icon">💼</div>
+                <h3>Gestión Digital & Trazabilidad</h3>
+                <p>Sistemas completos para seguimiento de proyectos, empleados y procesos productivos en tiempo real.</p>
+                <div class="service-links">
+                    <a href="https://crud-mixto.onrender.com/" target="_blank">→ CRUD Mixto - Gestión de Proyectos</a>
+                    <a href="https://frantastico-rgb.github.io/presentacion_innova_manager/" target="_blank">→ Innova Manager - Presentación</a>
+                    <a href="https://frantastico-rgb.github.io/vendor2/" target="_blank">→ Vendor2 - Trazabilidad Avanzada</a>
+                    <a href="https://frantastico-rgb.github.io/rea_productions/" target="_blank">→ REA Productions - Gestión Cinematográfica</a>
+                </div>
+            </div>
+
+            <!-- Desarrollo de Liderazgo -->
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>Desarrollo de Liderazgo</h3>
+                <p>Herramientas interactivas y gamificadas para fortalecer capacidades de liderazgo estratégico.</p>
+                <div class="service-links">
+                    <a href="https://frantastico-rgb.github.io/LIDERAZGO1/" target="_blank">→ Fundamentos de Liderazgo</a>
+                    <a href="https://frantastico-rgb.github.io/dominion_nat_6/" target="_blank">→ Dominion Nat 6 - Juego Estratégico</a>
+                    <a href="https://frantastico-rgb.github.io/ARBOL-PROYECTO-DE-VIDA/" target="_blank">→ Árbol Proyecto de Vida</a>
+                </div>
+            </div>
+
+            <!-- Estrategia Organizacional -->
+            <div class="service-card">
+                <div class="service-icon">🌱</div>
+                <h3>Estrategia & Ecosistemas</h3>
+                <p>Construcción de cultura organizacional y desarrollo de ecosistemas productivos sostenibles.</p>
+                <div class="service-links">
+                    <a href="https://frantastico-rgb.github.io/EKINE/" target="_blank">→ EKINE - Convocatoria Ecosistemas</a>
+                    <a href="https://frantastico-rgb.github.io/TEOPOLITICA/" target="_blank">→ TeoPolítica - Cultura Política</a>
+                </div>
+            </div>
+
+            <!-- Consultoría Personalizada -->
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Consultoría Personalizada</h3>
+                <p>Soluciones a medida para transformación digital y optimización de procesos empresariales.</p>
+                <div class="service-links">
+                    <a href="#contacto">→ Solicitar Consultoría</a>
+                    <a href="#about">→ Ver Experiencia</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demos Interactive -->
+    <section id="demos">
+        <h2>Experiencias Interactivas</h2>
+        <div class="demos-container">
+            <div class="demo-card">
+                <h3>🎮 Dominion Nat 6</h3>
+                <p>Juego estratégico de liderazgo con 7 niveles de complejidad. Isla Flor te desafía a construir ecosistemas productivos sostenibles.</p>
+                <a href="https://frantastico-rgb.github.io/dominion_nat_6/" target="_blank" class="demo-button">Jugar Ahora</a>
+            </div>
+
+            <div class="demo-card">
+                <h3>📊 Simulador de Liderazgo</h3>
+                <p>Ejercicios interactivos para desarrollar competencias de liderazgo efectivo en equipos de trabajo.</p>
+                <a href="https://frantastico-rgb.github.io/LIDERAZGO1/" target="_blank" class="demo-button">Probar Demo</a>
+            </div>
+
+            <div class="demo-card">
+                <h3>🎬 REA Productions</h3>
+                <p>Sistema de gestión completo para producción cinematográfica: casting, recursos, guiones y patrocinadores.</p>
+                <a href="https://frantastico-rgb.github.io/rea_productions/" target="_blank" class="demo-button">Ver Sistema</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-section">
+            <div class="about-content">
+                <h2 style="text-align: left; color: #667eea;">Quién Soy</h2>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Arquitecto de ecosistemas digitales con experiencia en transformación organizacional, desarrollo de software y estrategias de innovación. Combino tecnología, liderazgo y visión sistémica para crear soluciones que impulsan el crecimiento sostenible de organizaciones.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                    Mi enfoque integra gestión de proyectos, desarrollo de capacidades humanas y herramientas digitales de última generación.
+                </p>
+                <a href="https://frantastico-rgb.github.io/cv/" target="_blank" class="cv-button">Ver CV Interactivo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto">
+        <div class="contact-section">
+            <h2>¿Listo para Transformar tu Organización?</h2>
+            <p style="font-size: 1.2rem; margin: 2rem 0;">Contacta conmigo y construyamos juntos el futuro de tu empresa</p>
+            <a href="mailto:frantastico_rgb@proton.me?subject=consulta%20por%20SINERGY_HUB" class="cta-button" style="margin-bottom: 1rem; display:inline-block;">Contacta conmigo</a>
+            <a href="https://frantastico-rgb.github.io/cv/" target="_blank" class="cta-button">Iniciar Conversación</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 SYNERGY LAB - Todos los derechos reservados</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Transformando Ideas en Sistemas</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .demo-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
