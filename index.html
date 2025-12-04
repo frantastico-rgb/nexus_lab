@@ -120,6 +120,42 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
+            justify-items: center;
+        }
+
+        /* Responsive grid for better balance with 5 cards */
+        @media (min-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 900px;
+                margin: 3rem auto 0;
+            }
+            .service-card:nth-child(4),
+            .service-card:nth-child(5) {
+                grid-column: span 1;
+                margin: 0 auto;
+                max-width: 280px;
+            }
+            .service-card:nth-child(4) {
+                grid-column: 1 / 2;
+                grid-row: 2;
+            }
+            .service-card:nth-child(5) {
+                grid-column: 3 / 4;
+                grid-row: 2;
+            }
+        }
+
+        @media (min-width: 900px) and (max-width: 1199px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                justify-items: center;
+            }
+            .service-card:nth-child(5) {
+                grid-column: 1 / -1;
+                max-width: 280px;
+                margin: 0 auto;
+            }
         }
 
         .service-card {
@@ -164,6 +200,64 @@
         .service-links a:hover {
             padding-left: 10px;
             text-decoration: underline;
+        }
+
+        /* Case Study Section */
+        .case-study-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .case-study-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
+        }
+
+        .case-study-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+
+        .case-study-card h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .case-study-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .case-study-button {
+            background: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .case-study-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
         /* Portfolio/Demos */
@@ -358,6 +452,31 @@
                     <a href="#about">→ Ver Experiencia</a>
                 </div>
             </div>
+
+            <!-- Seguridad & Calidad de Software -->
+            <div class="service-card">
+                <div class="service-icon">🔒</div>
+                <h3>Seguridad & Calidad de Software</h3>
+                <p>Implementación de normas internacionales y sistemas de gestión de seguridad informática para garantizar la calidad del software.</p>
+                <div class="service-links">
+                    <a href="https://normas-calidad-software.vercel.app/" target="_blank">→ Normas Internacionales de Calidad</a>
+                    <a href="#contacto">→ Consultar Implementación</a>
+                    <a href="#about">→ Ver Certificaciones</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Casos de Estudio -->
+    <section id="casos-estudio">
+        <h2>Casos de Estudio</h2>
+        <div class="case-study-container">
+            <div class="case-study-card">
+                <div class="case-study-icon">🏭</div>
+                <h3>SLB Vision - Sector Energético</h3>
+                <p>Análisis integral de requerimientos para empresa líder del sector energético, incluyendo gestión de proyectos I+D, simulación de sistemas, gestión de calidad y análisis de viabilidad de servicios energéticos.</p>
+                <a href="https://slb-vision.vercel.app/" target="_blank" class="case-study-button">Ver Caso Completo</a>
+            </div>
         </div>
     </section>
 
@@ -416,7 +535,7 @@
         <p>&copy; 2025 SYNERGY LAB - Todos los derechos reservados</p>
         <p style="margin-top: 0.5rem; opacity: 0.8;">Transformando Ideas en Sistemas</p>
         <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.85;">
-            <a href="https://frantastico-rgb.github.io/normas-calidad-software/" target="_blank" style="color: #fff; text-decoration: underline;">Normas Internacionales de Calidad en Software</a>
+            <a href="https://normas-calidad-software.vercel.app/" target="_blank" style="color: #fff; text-decoration: underline;">Normas Internacionales de Calidad en Software</a>
             &nbsp;— Identifica, analiza y compara estándares clave para el desarrollo profesional.<br>
             <span style="font-size:0.9em; opacity:0.7;">(Soporte y apoyo al equipo de trabajo)</span>
         </p>
